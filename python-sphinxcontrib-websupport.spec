@@ -12,6 +12,7 @@ BuildArch:	noarch
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python-setuptools
+BuildRequires:	python2-setuptools
 
 %description
 Web support for the Sphinx documentation generator
