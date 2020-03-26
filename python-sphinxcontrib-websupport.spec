@@ -2,7 +2,7 @@
 
 Summary:	Web support for the Sphinx documentation generator
 Name:		python-%{module}
-Version:	1.2.0
+Version:	1.2.1
 Release:	1
 Source0:	https://github.com/sphinx-doc/%{module}/archive/%{version}.tar.gz
 License:	ISC
