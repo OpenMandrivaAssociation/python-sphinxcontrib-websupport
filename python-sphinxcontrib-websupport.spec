@@ -1,42 +1,26 @@
-%define	module	sphinxcontrib-websupport
+%define module sphinxcontrib-websupport
 
 Summary:	Web support for the Sphinx documentation generator
 Name:		python-%{module}
 Version:	1.2.4
-Release:	1
-Source0:	https://github.com/sphinx-doc/%{module}/archive/%{version}.tar.gz
+Release:	2
+Source0:	https://github.com/sphinx-doc/%{module}/archive/%{module}-%{version}.tar.gz
 License:	ISC
 Group:		Development/Python
 Url:		http://sphinx-doc.org/
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python2)
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	python-setuptools
-BuildRequires:	python2-setuptools
+Obsoletes:	python2-%{module} < 1.2.4-2
 
 %description
-Web support for the Sphinx documentation generator
-
-%package -n python2-%{module}
-Summary:	Web support for the Sphinx documentation generator
-Group:		Development/Python
-
-%description -n python2-%{module}
-Web support for the Sphinx documentation generator
+Web support for the Sphinx documentation generator.
 
 %prep
-%setup -qc
-cp -a %{module}-%{version} py2
+%autosetup -n %{module}-%{version} -p1
 
 %install
-cd py2
-PYTHONDONTWRITEBYTECODE=1 %__python2 setup.py install --root=%{buildroot}
-
-cd ../%{module}-%{version}
-PYTHONDONTWRITEBYTECODE=1 %__python setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE=1 python setup.py install --root=%{buildroot}
 
 %files
 %{py_puresitedir}/sphinxcontrib*
-
-%files -n python2-%{module}
-%{py2_puresitedir}/sphinxcontrib*
